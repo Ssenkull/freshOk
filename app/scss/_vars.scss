@@ -1,40 +1,38 @@
-$default: #8d8d8d;
-$accent: #fe3e57;
-$title: #29282d;
-$bg: #f6f6f6;
+$white: #ffffff;
+$white100: #EFF6E7;
+$silver100: #F6F6F6;
+$silver500: #CFCFCF;
+$silver600: #C1C1C1;
+$silver700: #B0B0B0;
 
-%quicksand-400{
-    font-family: 'Quicksand-Regular', sans-serif ;
-    font-weight: 400;
-}
+$black: #000000;
+$dark900: #121212;
+$dark800: #31352B;
+$dark500: #505050;
+$dark200: #4F4F4F;
 
-%quicksand-500{
-    font-family: 'Quicksand-Medium', sans-serif ;
-    font-weight: 400;
-}
+$green200: #E0EDCF;
+$green900: #63A60F;
+$green400: #63A60E;
+$green100: #4D810C;
 
-%roboto-400 {
-    font-family: 'Roboto-Regular', sans-serif ;
-    font-weight: 400;
-}
+$yellow900: #FFB800;
+$orange900: #FF7A00;
+$red700: #CF3E3B;
 
-%roboto-700 {
-    font-family: 'Roboto-Bold', sans-serif ;
-    font-weight: 700;
-}
+$ruda: "Ruda", "Roboto", sans-serif;
+$sans: "Open-Sans", "Roboto", sans-serif;
+$fw-900: 900;
+$fw-700: 700;
+$fw-600: 600;
+$fw-400: 400;
+$fw-300: 300;
 
-%btn {
-    padding: 12px 26px;
-    text-transform: uppercase;
-    color: #fff;
-    background-color: $accent;
-    box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
-    @extend %roboto-400;
-}
+$desktop: 1200;
+$lg: 992;
+$tablet: 768;
+$sm: 600;
+$phone: 468;
 
-@function max($numbers...) {
-@return m#{a}x(#{$numbers});
-}
-@function min($numbers...) {
-@return m#{i}n(#{$numbers});
-}
+$lg-height: 720;
+$tablet-height: 680;

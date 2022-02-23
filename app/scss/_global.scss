@@ -1,46 +1,291 @@
+@import 'mixins';
+
 html,
-body{
-    height: 100%;
+body {
+  height: 100%;
 }
 
 body {
-    color: $default;
-    font-size: 16px;
-    line-height: 26px;
-    @extend %quicksand-500;
-    display: flex;
-    flex-direction: column;
+  font-family: $sans;
+  font-weight: $fw-400;
+  font-size: 16px;
+  line-height: 1.4;
+  background-color: $white;
+  color: $dark900;
 }
 
-.main{
-    flex-grow: 1;
+main {
+  flex: 1 1 auto;
+}
+
+.body {
+
+  &--basket,
+  &--menu-adaptive,
+  &--shop-active {
+    overflow: hidden;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  &--basket-active,
+  &--menu-adaptive,
+  &--shop-active {
+
+    &::before {
+      @extend %absolute-pseudo;
+      background-color: rgba($black, 0.15);
+      width: 100%;
+      height: 100%;
+      z-index: 65;
+    }
+  }
+
+  @include r($sm) {
+    &--shop-active {
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        background-color: #C3C3C3;
+        width: 100%;
+        height: 100%;
+        z-index: 40;
+        top: 0;
+      }
+    }
+  }
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-a {
-    font-size: 16px;
-    line-height: 26px;
-    color: $default;
-    @extend %quicksand-500;
+.logo {
+  border-radius: 3px;
+  flex-shrink: 0;
+  transition: box-shadow 0.3s, opacity 0.3s;
+
+  &__img {
+    object-fit: cover;
+
+    &--adaptive {
+      display: none;
+    }
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px $white100;
+  }
+
+  &:hover {
+    opacity: 0.65;
+  }
+}
+
+.btn {
+  font-size: 18px;
+  line-height: 1.3;
+  color: $white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  background-color: $green900;
+  letter-spacing: 0.03em;
+  align-self: flex-start;
+  transition: box-shadow 0.3s, color 0.3s, background-color 0.3s;
+
+  &:focus {
+    box-shadow: 0 0 0 4px $green200;
+  }
+
+  &:hover {
+    background-color: $green100;
+  }
+
+  &:active {
+    color: rgba($white, 0.5);
+    box-shadow: inset 0 4px 4px rgba($black, 0.25);
+  }
+
+  &--green {
+    background-color: transparent;
+    color: $green900;
+    border: 1px solid $green900;
+
+    &:focus {
+      box-shadow: 0 0 0 4px rgba($green400, 0.5);
+      color: $green900;
+    }
+
+    &:hover {
+      background-color: $green100;
+    }
+
+    &:active {
+      box-shadow: inset 0 10px 4px rgba($black, 0.1);
+      background-color: transparent;
+    }
+  }
+
+  &--black {
+    padding: 15px 52px;
+    background-color: $dark800;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    &:focus {
+      box-shadow: 0 0 0 4px rgba($white, 0.5);
+    }
+
+    &:hover {
+      background-color: rgba($dark800, 0.75);
+    }
+
+    &:active {
+      background-color: $dark800;
+    }
+  }
+
+  &--white {
+    background-color: transparent;
+    color: $green900;
+    border: 1px solid $green900;
+
+    &:hover {
+      background-color: $white100;
+    }
+
+    &:active {
+      background-color: transparent;
+      color: rgba($green900, 0.5);
+    }
+  }
+}
+
+.section {
+  padding: 72px 0;
+
+  @include r($lg) {
+    padding: 48px 0;
+  }
 }
 
 .title {
-    text-align: center;
-    @extend %roboto-700;
-    font-size: 48px;
-    line-height: 65px;
-    color: $title;
-    margin-bottom: 10px;
-    text-transform: uppercase;
+  font-family: $ruda;
+  font-weight: $fw-600;
+  font-size: 32px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+
+  @include r($lg) {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  @include r($phone) {
+    font-size: 24px;
+  }
 }
 
-.text {
-    text-align: center;
-    max-width: 570px;
-    margin: 0 auto 55px;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.btn-slider {
+  position: absolute;
+  transition: box-shadow 0.3s, background-color 0.3s;
+  @extend %absolute-top-trasform;
+  z-index: 50;
+  padding: 12px 20px;
+  background-color: rgba($white, 0.80);
+  border-radius: 6px;
+  line-height: 1;
+
+  &--main-prev {
+    left: 60px;
+  }
+
+  &--main-next {
+    right: 60px;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($green400, 0.5);
+
+    .btn-slider__svg {
+      fill: $dark500;
+    }
+  }
+
+  &:hover {
+    background-color: $green200;
+
+    .btn-slider__svg {
+      fill: $green900;
+    }
+  }
+
+  &:active {
+    background-color: rgba($white, 0.80);
+    box-shadow: none;
+
+    .btn-slider__svg {
+      fill: $green900;
+    }
+  }
+
+  &__svg {
+    transition: fill 0.3s;
+    width: 19px;
+    height: 32px;
+    fill: $dark500;
+  }
+}
+
+.slick-disabled {
+  cursor: auto;
+
+  .btn-slider__svg {
+    fill: $silver600;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &:focus {
+    box-shadow: none;
+
+    .btn-slider__svg {
+      fill: $silver600;
+    }
+  }
+
+  &:hover {
+    background-color: rgba($white, 0.80);
+
+    .btn-slider__svg {
+      fill: $silver600;
+    }
+  }
 }
